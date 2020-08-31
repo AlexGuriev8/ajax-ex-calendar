@@ -6,32 +6,33 @@ $(document).ready(function(){
     insertHolidays(dataCorrente);
 
     $('#next').click(function(){
-        var dataC = moment($('.month').data('this-date'));
-            console.log(dataC);
-            console.log(dataC.month());
-        if(dataC.month() == 11){
-            alert('Mese non disponibile');
-        }else{
-            var newData = dataC.add(1,'M');
-        }
-        insertData(newData);
-        insertHolidays(newData);
-
+        next();
     });
 
     $('#prev').click(function(){
-        var dataC = moment($('.month').data('this-date'));
-        if(dataC.month() == 0){
-            alert('Mese non disponibile');
-        }else{
-            var newData = dataC.substract(1,'M');
-        }
-        insertData(newData);
-        insertHolidays(newData);
-
+        prev();     
     });
 
-    
+    function next() {
+        if (dataCorrente.month() == 11) {
+            alert('mese non disponibile');
+        } else {
+            dataCorrente.add(1, 'M');
+            $('.month-list').children().remove();
+            insertData(dataCorrente);
+            insertHolidays(dataCorrente);
+        }
+    }
+    function prev() {
+        if (dataCorrente.month() == 0) {
+            alert('mese non disponibile');
+        } else {
+            dataCorrente.subtract(1, 'M');
+            $('.month-list').children().remove();
+            insertData(dataCorrente);
+            insertHolidays(dataCorrente);
+        }
+    }
 
 });
 
@@ -85,3 +86,4 @@ function addZero(n){
     }
     return n;
 }
+
