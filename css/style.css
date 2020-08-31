@@ -16,3 +16,7 @@ button, h1 {
     cursor: pointer;
     padding: 10px;
 }
+
+li.holiday{
+    color: red;
+}

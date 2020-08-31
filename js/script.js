@@ -3,7 +3,7 @@ $(document).ready(function(){
     //creiamo un oggetto moment su questa data
     var dataCorrente = moment('2018-01-01');
     insertData(dataCorrente);
-    
+    insertHolidays(dataCorrente);
 
 });
 
@@ -27,6 +27,29 @@ function insertData(data){
         var html = template(context);
         $('.month-list').append(html);
     }
+}
+
+function insertHolidays(data){
+    $.ajax(
+        {
+            url: 'https://flynn.boolean.careers/exercises/api/holidays',
+            method: 'GET',
+            data: {
+                year:data.year(),
+                month: data.month()
+            },
+            success: function(risposta){
+                for(var i = 0; i < risposta.response.length; i++){
+                    var listItem = $('li[data-complete-date="'+ risposta.response[i].date + '"]');
+                    listItem.append(' - ' + risposta.response[i].name);
+                    listItem.addClass('holiday');
+                }
+            },
+            erro: function(){
+                alert('errore');
+            }
+        }
+    )
 }
 
 function addZero(n){
