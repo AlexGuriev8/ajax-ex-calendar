@@ -1,0 +1,37 @@
+$(document).ready(function(){
+    //data di partenza è il 2018-01-01
+    //creiamo un oggetto moment su questa data
+    var dataCorrente = moment('2018-01-01');
+    insertData(dataCorrente);
+    
+
+});
+
+function insertData(data){ 
+    var month = data.format('MMMM');
+    var year = data.format('YYYY')
+
+    $('h1.month').html(month + year);
+    var daysMonth = data.daysInMonth();
+    console.log(daysMonth);
+
+    for (var i = 1; i <= daysMonth; i++) {
+        var source = $("#day-template").html();
+        var template = Handlebars.compile(source);
+
+        var context = {
+            day: addZero(i),
+            month: month,
+            completeDate: year + '-' + data.format('MM') + '-' + addZero(i)
+        };
+        var html = template(context);
+        $('.month-list').append(html);
+    }
+}
+
+function addZero(n){
+    if(n < 10){
+        return '0' + n;
+    }
+    return n;
+}
