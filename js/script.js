@@ -5,6 +5,34 @@ $(document).ready(function(){
     insertData(dataCorrente);
     insertHolidays(dataCorrente);
 
+    $('#next').click(function(){
+        var dataC = moment($('.month').data('this-date'));
+            console.log(dataC);
+            console.log(dataC.month());
+        if(dataC.month() == 11){
+            alert('Mese non disponibile');
+        }else{
+            var newData = dataC.add(1,'M');
+        }
+        insertData(newData);
+        insertHolidays(newData);
+
+    });
+
+    $('#prev').click(function(){
+        var dataC = moment($('.month').data('this-date'));
+        if(dataC.month() == 0){
+            alert('Mese non disponibile');
+        }else{
+            var newData = dataC.substract(1,'M');
+        }
+        insertData(newData);
+        insertHolidays(newData);
+
+    });
+
+    
+
 });
 
 function insertData(data){ 
@@ -13,7 +41,6 @@ function insertData(data){
 
     $('h1.month').html(month + year);
     var daysMonth = data.daysInMonth();
-    console.log(daysMonth);
 
     for (var i = 1; i <= daysMonth; i++) {
         var source = $("#day-template").html();
