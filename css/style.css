@@ -4,19 +4,93 @@
     box-sizing: border-box;
 }
 
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(211, 205, 205) ;
+}
+
 .container {
-    text-align: center;
-    margin: 0 auto;
+  max-width: 1170px;
+  min-height: 80%;
+  max-height: 95%;
 }
 
-button, h1 {
-    display: inline-block;
-    border: 0;
-    background: white;
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-title i {
+    font-size: 40px;
     cursor: pointer;
-    padding: 10px;
 }
 
-li.holiday{
-    color: red;
+.calendar {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.month-list {
+    list-style: none;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    background: linear-gradient(
+    90deg, 
+  rgb(216, 208, 208) 0%, 
+  rgb(161, 154, 154) 50%);
+}
+
+.month-list li {
+    width: calc(100% / 7);
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(128, 101, 101);
+}
+
+
+.month-list li:first-child.monday-margin {
+  margin-left: 0;
+}
+
+.month-list li:first-child.tuesday-margin {
+  margin-left: calc(100% / 7);
+}
+
+.month-list li:first-child.wednesday-margin {
+  margin-left: calc((100% / 7) * 2);
+}
+
+.month-list li:first-child.thursday-margin {
+  margin-left: calc((100% / 7) * 3);
+}
+
+.month-list li:first-child.friday-margin {
+  margin-left: calc((100% / 7) * 4);
+}
+
+.month-list li:first-child.saturday-margin {
+  margin-left: calc((100% / 7) * 5);
+}
+
+.month-list li:first-child.sunday-margin {
+  margin-left: calc((100% / 7) * 6);
+}
+
+.holiday{
+    color: #f5a745;
+    background-color: rgb(136, 69, 69);
 }

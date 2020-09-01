@@ -5,19 +5,28 @@
     <title>Calendar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'/>
     <script src="https://momentjs.com/downloads/moment.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <button id="prev"><<<</button>
-        <h1 class="month" data-this-date= "2018-01-01"></h1>
-        <button id="next">>>></button>
+    <div class="container column">
+    <!-- Calendar title -->
+    <div class="calendar-title">
+        <i id="prev" class="fas fa-angle-left "></i>
+        <h1 class="month" data-this-date= "2018-01-01">Calendar</h1>
+        <i id="next" class="fas fa-angle-right "></i>
+    </div>
+
+    <!-- Calendar -->
+        <div class="calendar">
+            <ul class="month-list"></ul>
+        </div>
+    </div>
     
-        <ul class="month-list"></ul>
     </div>
     <script id="day-template" type="text/x-handlebars-template">
         <li data-complete-date = "{{completeDate}}">{{day}} {{month}}</li>
